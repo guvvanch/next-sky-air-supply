@@ -220,7 +220,7 @@ export function SecondaryFeatures() {
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
             We are a team of talented professionals who serve aviation companies
-            around the world. Our clients don't thinkof us as vendors but as
+            around the world. Our clients do not thinkof us as vendors but as
             partners throughout their journey. We are privileged to work with
             many great organizations to help their business. Join them and
             become partner with us.

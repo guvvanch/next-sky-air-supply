@@ -99,7 +99,7 @@ export function Header() {
               <img src="/logo.png" className="h-16 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
-              <NavLink href="#features">About Us</NavLink>
+              <NavLink href="#secondary-features">About Us</NavLink>
               <NavLink href="#testimonials">Products</NavLink>
               <NavLink href="#pricing">Contact</NavLink>
             </div>
