@@ -2,6 +2,9 @@ import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+// import { send } from 'emailjs-com'
+import React, { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 function SwirlyDoodle({ className }) {
   return (
@@ -20,80 +23,48 @@ function SwirlyDoodle({ className }) {
   )
 }
 
-function CheckIcon({ className }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={clsx(
-        'h-6 w-6 flex-none fill-current stroke-current',
-        className
-      )}
-    >
-      <path
-        d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-        strokeWidth={0}
-      />
-      <circle
-        cx={12}
-        cy={12}
-        r={8.25}
-        fill="none"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function Plan({ name, price, description, href, features, featured = false }) {
-  return (
-    <section
-      className={clsx(
-        'flex flex-col rounded-3xl px-6 sm:px-8',
-        featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8'
-      )}
-    >
-      <h3 className="mt-5 font-display text-lg text-white">{name}</h3>
-      <p
-        className={clsx(
-          'mt-2 text-base',
-          featured ? 'text-white' : 'text-slate-400'
-        )}
-      >
-        {description}
-      </p>
-      <p className="order-first font-display text-5xl font-light tracking-tight text-white">
-        {price}
-      </p>
-      <ul
-        role="list"
-        className={clsx(
-          'order-last mt-10 flex flex-col gap-y-3 text-sm',
-          featured ? 'text-white' : 'text-slate-200'
-        )}
-      >
-        {features.map((feature) => (
-          <li key={feature} className="flex">
-            <CheckIcon className={featured ? 'text-white' : 'text-slate-400'} />
-            <span className="ml-4">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <Button
-        href={href}
-        variant={featured ? 'solid' : 'outline'}
-        color="white"
-        className="mt-8"
-        aria-label={`Get started with the ${name} plan for ${price}`}
-      >
-        Get started
-      </Button>
-    </section>
-  )
-}
-
 export function Pricing() {
+  const form = useRef()
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [formValues, setFormValues] = useState({
+    name: '',
+    company_name: '',
+    email: '',
+    message: '',
+  })
+
+  const sendEmail = (e) => {
+    e.preventDefault()
+
+    emailjs
+      .sendForm(
+        'service_rfq',
+        'template_rfq',
+        form.current,
+        '2quAdVPwcxgSqz7C_'
+      )
+      .then(
+        (result) => {
+          setFormValues({
+            name: '',
+            company_name: '',
+            email: '',
+            message: '',
+          })
+          setIsSubmitted(true)
+          console.log(result.text)
+        },
+        (error) => {
+          console.log(error.text)
+        }
+      )
+  }
+
+  const handleChange = (e, prop) => {
+    e.preventDefault()
+
+    setFormValues({ ...formValues, [prop]: e.target.value })
+  }
   return (
     <section
       id="pricing"
@@ -113,7 +84,11 @@ export function Pricing() {
             Let us know your needs, and we will get them shipped immediately.
           </p>
         </div>
-        <form className="mx-auto flex max-w-[600px] flex-col">
+        <form
+          className="mx-auto flex max-w-[600px] flex-col"
+          ref={form}
+          onSubmit={sendEmail}
+        >
           <div className="mt-6">
             <label
               for="full-name"
@@ -124,8 +99,12 @@ export function Pricing() {
             <input
               type="text"
               id="full-name"
+              name="name"
+              value={formValues.name}
+              onChange={(e) => handleChange(e, 'name')}
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="Ian Roberts"
+              required
             />
           </div>
           <div class="mt-3">
@@ -138,8 +117,12 @@ export function Pricing() {
             <input
               type="text"
               id="Company-name"
+              name="company_name"
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="Western Spark LLC"
+              value={formValues.company_name}
+              onChange={(e) => handleChange(e, 'company_name')}
+              required
             />
           </div>
           <div className="mt-3">
@@ -152,9 +135,13 @@ export function Pricing() {
             <input
               type="email"
               id="email"
+              name="email"
+              value={formValues.email}
+              onChange={(e) => handleChange(e, 'email')}
               aria-describedby="helper-text-explanation"
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="name@western-spark.com"
+              required
             />
           </div>
           <div className="mt-3">
@@ -166,9 +153,13 @@ export function Pricing() {
             </label>
             <textarea
               id="message"
+              name="message"
               rows="4"
+              value={formValues.message}
+              onChange={(e) => handleChange(e, 'message')}
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="How can we help you?"
+              required
             ></textarea>
           </div>
           <button
@@ -177,6 +168,12 @@ export function Pricing() {
           >
             Submit
           </button>
+          {isSubmitted && (
+            <div className="mt-10 text-green-500">
+              Thank you for your inquiry! We have received your request and will
+              get back to you soon.
+            </div>
+          )}
         </form>
       </Container>
     </section>
