@@ -12,6 +12,7 @@ import logoTuple from '@/images/logos/tuple.svg'
 export function Hero() {
   return (
     <div
+      className="h-auto lg:h-[100vh]"
       style={{
         backgroundImage: 'url(/hero6.jpg)',
         backgroundRepeat: 'no-repeat',
@@ -52,7 +53,7 @@ export function Hero() {
           <span className="ml-3">Watch video</span>
         </Button> */}
         </div>
-        <div className="mt-36 lg:mt-44">
+        {/* <div className="mt-36 lg:mt-44">
           <p className="font-display text-base text-slate-900">
             Trusted by these six companies so far
           </p>
@@ -90,7 +91,7 @@ export function Hero() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </Container>
     </div>
   )

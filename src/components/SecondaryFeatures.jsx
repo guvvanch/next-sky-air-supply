@@ -225,12 +225,12 @@ export function SecondaryFeatures() {
             many great organizations to help their business. Join them and
             become partner with us.
           </p>
-          <h6 className="mt-8 font-display text-2xl tracking-tight text-slate-900 sm:text-3xl">
+          {/* <h6 className="mt-8 font-display text-2xl tracking-tight text-slate-900 sm:text-3xl">
             Core Values
-          </h6>
+          </h6> */}
         </div>
-        <FeaturesMobile />
-        <FeaturesDesktop />
+        {/* <FeaturesMobile />
+        <FeaturesDesktop /> */}
       </Container>
     </section>
   )

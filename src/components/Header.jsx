@@ -77,11 +77,11 @@ function MobileNavigation() {
             as="div"
             className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
           >
-            <MobileNavLink href="#features">Features</MobileNavLink>
-            <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-            <MobileNavLink href="#pricing">Pricing</MobileNavLink>
+            <MobileNavLink href="#secondary-features">About Us</MobileNavLink>
+            <MobileNavLink href="#testimonials">Products</MobileNavLink>
+            <MobileNavLink href="#pricing">Contact</MobileNavLink>
             <hr className="m-2 border-slate-300/40" />
-            <MobileNavLink href="/login">Sign in</MobileNavLink>
+            <MobileNavLink href="#pricing">Get A Quote</MobileNavLink>
           </Popover.Panel>
         </Transition.Child>
       </Transition.Root>
@@ -108,7 +108,7 @@ export function Header() {
             {/* <div className="hidden md:block">
               <NavLink href="/login">Sign in</NavLink>
             </div> */}
-            <Button href="#pricing" color="blue">
+            <Button href="#pricing" color="blue" className="hidden sm:flex">
               <span>GET A QUOTE</span>
             </Button>
             <div className="-mr-1 md:hidden">
