@@ -18,8 +18,10 @@ export function Footer() {
           <img src="/logo.jpeg" className="mx-auto h-10 w-auto" />
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
-              {navItems.map((item) => (
-                <NavLink href={item.url}>{item.title}</NavLink>
+              {navItems.map((item, idx) => (
+                <NavLink key={idx} href={item.url}>
+                  {item.title}
+                </NavLink>
               ))}
             </div>
           </nav>

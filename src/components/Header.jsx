@@ -83,8 +83,10 @@ function MobileNavigation() {
             as="div"
             className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
           >
-            {navItems.map((item) => (
-              <MobileNavLink href={item.url}>{item.title}</MobileNavLink>
+            {navItems.map((item, idx) => (
+              <MobileNavLink key={idx} href={item.url}>
+                {item.title}
+              </MobileNavLink>
             ))}
             <hr className="m-2 border-slate-300/40" />
             <MobileNavLink href="/products/#rfq">Get A Quote</MobileNavLink>
@@ -105,8 +107,10 @@ export function Header() {
               <img src="/logo.jpeg" className="h-16 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
-              {navItems.map((item) => (
-                <NavLink href={item.url}>{item.title}</NavLink>
+              {navItems.map((item, idx) => (
+                <NavLink key={idx} href={item.url}>
+                  {item.title}
+                </NavLink>
               ))}
             </div>
           </div>

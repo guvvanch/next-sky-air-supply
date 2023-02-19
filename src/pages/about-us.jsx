@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import AboutText from '@/components/AboutText'
-import { Testimonials } from '@/components/Testimonials'
 
 export default function AboutUs() {
   return (
