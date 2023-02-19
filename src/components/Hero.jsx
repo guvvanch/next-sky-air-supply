@@ -2,12 +2,6 @@ import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import logoLaravel from '@/images/logos/laravel.svg'
-import logoMirage from '@/images/logos/mirage.svg'
-import logoStatamic from '@/images/logos/statamic.svg'
-import logoStaticKit from '@/images/logos/statickit.svg'
-import logoTransistor from '@/images/logos/transistor.svg'
-import logoTuple from '@/images/logos/tuple.svg'
 
 export function Hero() {
   return (
@@ -39,7 +33,7 @@ export function Hero() {
           approach, talented professionals, and reliability.
         </p>
         <div className="mt-10 flex justify-center ">
-          <Button href="#pricing">Reach Out Now</Button>
+          <Button href="/products#rfq">Reach Out Now</Button>
           {/* <Button
           href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           variant="outline"

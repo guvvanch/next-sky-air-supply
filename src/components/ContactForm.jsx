@@ -23,14 +23,15 @@ function SwirlyDoodle({ className }) {
   )
 }
 
-export function Pricing() {
+export default function ContactForm() {
   const form = useRef()
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [formValues, setFormValues] = useState({
     name: '',
-    company_name: '',
+    company: '',
     email: '',
     message: '',
+    phone_number: '',
   })
 
   const sendEmail = (e) => {
@@ -39,7 +40,7 @@ export function Pricing() {
     emailjs
       .sendForm(
         'service_rfq',
-        'template_rfq',
+        'template_contact',
         form.current,
         '2quAdVPwcxgSqz7C_'
       )
@@ -47,9 +48,10 @@ export function Pricing() {
         (result) => {
           setFormValues({
             name: '',
-            company_name: '',
+            company: '',
             email: '',
             message: '',
+            phone_number: '',
           })
           setIsSubmitted(true)
           console.log(result.text)
@@ -67,21 +69,18 @@ export function Pricing() {
   }
   return (
     <section
-      id="pricing"
-      aria-label="Pricing"
-      className="bg-slate-900 py-20 sm:py-32"
+      id="contact"
+      aria-label="Contact"
+      className="w-full py-20  sm:w-1/2 sm:py-32"
     >
       <Container>
         <div className="md:text-center">
-          <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-            <span className="relative whitespace-nowrap">
-              <SwirlyDoodle className="absolute top-1/2 left-0 h-[1em] w-full fill-blue-400" />
-              <span className="relative">Fair pricing,</span>
-            </span>{' '}
-            for everyone.
+          <h2 className="font-display text-3xl tracking-tight text-black sm:text-4xl">
+            Contact Information
           </h2>
           <p className="mt-4 text-lg text-slate-400">
-            Let us know your needs, and we will get them shipped immediately.
+            Please leave a detailed message and we will contact you within 24 to
+            48 hours
           </p>
         </div>
         <form
@@ -91,80 +90,97 @@ export function Pricing() {
         >
           <div className="mt-6">
             <label
-              for="full-name"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              for="name"
+              className="mb-2 block text-sm font-medium text-gray-900 "
             >
-              Full Name
+              Name
             </label>
             <input
               type="text"
-              id="full-name"
+              id="contact_name"
               name="name"
               value={formValues.name}
               onChange={(e) => handleChange(e, 'name')}
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              placeholder="Ian Roberts"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Johny Depp"
               required
             />
           </div>
           <div class="mt-3">
             <label
-              for="Company-Name"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              for="Company"
+              className="mb-2 block text-sm font-medium text-gray-900"
             >
-              Company Name
+              Company
             </label>
             <input
               type="text"
-              id="Company-name"
-              name="company_name"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              placeholder="Western Spark LLC"
-              value={formValues.company_name}
-              onChange={(e) => handleChange(e, 'company_name')}
+              id="Company"
+              name="company"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+              placeholder="Sky Air Supply Ltd"
+              value={formValues.company}
+              onChange={(e) => handleChange(e, 'company')}
               required
             />
           </div>
           <div className="mt-3">
             <label
               for="email"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              className="mb-2 block text-sm font-medium text-gray-900"
             >
-              Your email
+              Email
             </label>
             <input
               type="email"
-              id="email"
+              id="contact_email"
               name="email"
               value={formValues.email}
               onChange={(e) => handleChange(e, 'email')}
               aria-describedby="helper-text-explanation"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-              placeholder="name@western-spark.com"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+              placeholder="user@email.com"
+              required
+            />
+          </div>
+          <div class="mt-3">
+            <label
+              for="Phone number"
+              className="mb-2 block text-sm font-medium text-gray-900"
+            >
+              Phone Number
+            </label>
+            <input
+              type="text"
+              id="Phone_Number"
+              name="phone_number"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
+              placeholder="+1 (123) 456-7890"
+              value={formValues.phone_number}
+              onChange={(e) => handleChange(e, 'phone_number')}
               required
             />
           </div>
           <div className="mt-3">
             <label
-              for="message"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+              for="Message"
+              className="mb-2 block text-sm font-medium text-gray-900"
             >
-              Your message
+              Message
             </label>
             <textarea
-              id="message"
+              id="contact_message"
               name="message"
               rows="4"
               value={formValues.message}
               onChange={(e) => handleChange(e, 'message')}
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
               placeholder="How can we help you?"
-              required
             ></textarea>
           </div>
           <button
             type="submit"
-            className="mx-auto mt-6 w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+            className="mx-auto mt-6 w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300  sm:w-auto"
           >
             Submit
           </button>

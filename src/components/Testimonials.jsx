@@ -1,14 +1,13 @@
 import Image from 'next/image'
 
 import { Container } from '@/components/Container'
-import avatarImage1 from '@/images/avatars/avatar-1.png'
-import avatarImage2 from '@/images/avatars/avatar-2.png'
-import avatarImage3 from '@/images/avatars/avatar-3.png'
-import avatarImage4 from '@/images/avatars/avatar-4.png'
-import avatarImage5 from '@/images/avatars/avatar-5.png'
 
 const parts = [
   [
+    {
+      imageUrl: 'engine-parts.jpeg',
+      name: 'Engine Parts',
+    },
     {
       imageUrl: 'Bearings.png',
       name: 'Bearings',
@@ -24,6 +23,10 @@ const parts = [
   ],
   [
     {
+      imageUrl: 'rotable.jpeg',
+      name: 'Rotable Components',
+    },
+    {
       imageUrl: 'Electricals.png',
       name: 'Electricals',
     },
@@ -37,6 +40,10 @@ const parts = [
     },
   ],
   [
+    {
+      imageUrl: 'brake_wheels.jpeg',
+      name: 'Wheels and Brakes',
+    },
     {
       imageUrl: 'Interiors.png',
       name: 'Interiors',
@@ -70,7 +77,7 @@ export function Testimonials() {
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
             With hundreds of thousands of parts in our stock, we are ready to
-            serve you.
+            provide the following services:
           </p>
         </div>
         <ul
@@ -82,8 +89,11 @@ export function Testimonials() {
               <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">
                 {column.map((testimonial, testimonialIndex) => (
                   <li key={testimonialIndex}>
-                    <figure className="relative flex flex-col items-center rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
-                      <img src={testimonial.imageUrl} className="mx-auto" />
+                    <figure className="relative flex  flex-col items-center rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                      <img
+                        src={testimonial.imageUrl}
+                        className="mx-auto h-[242px] object-cover"
+                      />
                       <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6 text-3xl">
                         {testimonial.name}
                       </figcaption>

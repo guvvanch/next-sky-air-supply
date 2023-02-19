@@ -1,20 +1,26 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
+
+const navItems = [
+  { title: 'Home', url: '/' },
+  { title: 'About Us', url: '/about-us' },
+  { title: 'Contact', url: '/contact-us' },
+  { title: 'Products', url: '/products' },
+]
 
 export function Footer() {
   return (
     <footer className="bg-white">
       <Container>
         <div className="py-16">
-          <img src="/logo.png" className="mx-auto h-10 w-auto" />
+          <img src="/logo.jpeg" className="mx-auto h-10 w-auto" />
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
-              <NavLink href="#features">About Us</NavLink>
-              <NavLink href="#testimonials">Products</NavLink>
-              <NavLink href="#pricing">Contact</NavLink>
+              {navItems.map((item) => (
+                <NavLink href={item.url}>{item.title}</NavLink>
+              ))}
             </div>
           </nav>
         </div>
@@ -46,7 +52,7 @@ export function Footer() {
             </Link>
           </div> */}
           <p className="mt-6 text-sm text-slate-500 sm:mt-0">
-            Copyright &copy; {new Date().getFullYear()} Western Spark LLC. All
+            Copyright &copy; {new Date().getFullYear()} Sky Air Supply Ltd. All
             rights reserved.
           </p>
         </div>
