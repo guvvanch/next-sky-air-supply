@@ -33,7 +33,6 @@ export default function ContactForm() {
     message: '',
     phone_number: '',
   })
-
   const sendEmail = (e) => {
     e.preventDefault()
 
@@ -42,7 +41,7 @@ export default function ContactForm() {
         'service_rfq',
         'template_contact',
         form.current,
-        '2quAdVPwcxgSqz7C_'
+        process.env.NEXT_PUBLIC_EMAILJS_KEY
       )
       .then(
         (result) => {
@@ -54,7 +53,6 @@ export default function ContactForm() {
             phone_number: '',
           })
           setIsSubmitted(true)
-          console.log(result.text)
         },
         (error) => {
           console.log(error.text)

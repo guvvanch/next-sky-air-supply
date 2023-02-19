@@ -41,7 +41,7 @@ export function Rfq() {
         'service_rfq',
         'template_rfq',
         form.current,
-        '2quAdVPwcxgSqz7C_'
+        process.env.NEXT_PUBLIC_EMAILJS_KEY
       )
       .then(
         (result) => {
@@ -52,7 +52,6 @@ export function Rfq() {
             message: '',
           })
           setIsSubmitted(true)
-          console.log(result.text)
         },
         (error) => {
           console.log(error.text)
