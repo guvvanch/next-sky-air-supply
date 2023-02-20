@@ -11,6 +11,7 @@ const Slider = () => {
         <div class="slide-track">
           {companySeq.map((seq) => (
             <div
+              key={seq}
               className="slide"
               style={{ display: 'flex', justifyContent: 'center' }}
             >
