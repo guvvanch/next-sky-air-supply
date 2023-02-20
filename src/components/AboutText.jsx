@@ -20,7 +20,7 @@ const AboutText = () => {
     <section
       id="about-text"
       aria-label="Features for simplifying everyday business tasks"
-      className="pt-20 pb-14 sm:pb-20 sm:pt-32 lg:pb-32"
+      className="pt-20 pb-14 sm:pb-20 sm:pt-20 lg:pb-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
@@ -30,12 +30,7 @@ const AboutText = () => {
           <p className="mt-4 text-lg tracking-tight text-slate-700">
             {isAboutUsPage ? aboutOurCompanyText : whoWeAreText}
           </p>
-          {/* <h6 className="mt-8 font-display text-2xl tracking-tight text-slate-900 sm:text-3xl">
-            Core Values
-          </h6> */}
         </div>
-        {/* <FeaturesMobile />
-        <FeaturesDesktop /> */}
       </Container>
     </section>
   )

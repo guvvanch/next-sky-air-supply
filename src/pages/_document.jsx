@@ -10,6 +10,7 @@ export default function Document(props) {
     >
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="shortcut icon" href="favicon.jpeg" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"

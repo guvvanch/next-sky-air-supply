@@ -1,8 +1,4 @@
-import clsx from 'clsx'
-
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-// import { send } from 'emailjs-com'
 import React, { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 

@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { GiPositionMarker } from 'react-icons/gi'
-// import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-// import 'leaflet/dist/leaflet.css'
-// import GoogleMapReact from 'google-map-react'
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>
 
 const Map = () => {
   return (
