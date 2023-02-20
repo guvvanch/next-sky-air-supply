@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import AboutText from '@/components/AboutText'
+import Slider from '@/components/Slider'
 
 export default function AboutUs() {
   return (
@@ -16,6 +17,7 @@ export default function AboutUs() {
       <Header />
       <main>
         <AboutText />
+        <Slider />
       </main>
       <Footer />
     </>
